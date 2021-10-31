@@ -7,3 +7,4 @@ Application takes user input to create a team profile. Application uses node js 
 User will need to clone repository and install node.
 
 ## Screenshot of working application
+![sample-html](/src/images/team-generator.png)
