@@ -56,21 +56,23 @@ function menu(){
 function addEngineer(){
     inquirer.prompt([
         {
-            type: 'input',
-            name: 'enginerName',
+            type: "input",
+            name: "enginerName",
             message: "What is the Engineer's name?"
         },
         {
-            type: 'input',
-            name: 'enginerID',
+            type: "input",
+            name: "enginerID",
             message: "What is the Engineer's Id?"
-        },     {
-            type: 'input',
-            name: 'enginerEmail',
+        },     
+        {
+            type: "input",
+            name: "enginerEmail",
             message: "What is the Engineer's Email?"
-        },     {
-            type: 'input',
-            name: 'enginerGithub',
+        },     
+        {
+            type: "input",
+            name: "enginerGithub",
             message: "What is the Engineer's Github?"
         }
     ]).then(answers => {
@@ -84,21 +86,23 @@ function addEngineer(){
 function addIntern(){
     inquirer.prompt([
         {
-            type: 'input',
-            name: 'internName',
+            type: "input",
+            name: "internName",
             message: "What is the Intern's name?"
         },
         {
-            type: 'input',
-            name: 'internID',
+            type: "input",
+            name: "internID",
             message: "What is the Intern's Id?"
-        },     {
-            type: 'input',
-            name: 'internEmail',
+        },     
+        {
+            type: "input",
+            name: "internEmail",
             message: "What is the Intern's Email?"
-        },     {
-            type: 'input',
-            name: 'internGithub',
+        },     
+        {
+            type: "input",
+            name: "internGithub",
             message: "What is the Intern's Github?"
         }
     ]).then(answers => {
@@ -110,9 +114,43 @@ function addIntern(){
 }
 
 function generateHtml(arr) {
-    let outputString = 
+    console.log(arr);
+    let outputString= `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Team Generator</title>
+    </head>
+    <body>`
 
-    fs.writeFile("./dist/index.html", outputString, (err) => {
+    for(i=0; i< arr.length; i++){
+        if(arr[i].getType() == "Manager"){
+            outputString += `<h1>Manager: ${arr[i].name}</h1>
+                             <h4>Id: ${arr[i].id}<br>
+                             Email: ${arr[i].email}</h4>               
+            `
+        }else if(arr[i].getType() == "Engineer"){
+            outputString += `<h2>Engineer: ${arr[i].engineerName}</h2>
+                             <h4>Id: ${arr[i].engineerId}<br>
+                             Email: ${arr[i].engineerEmail}<br>
+                             Github: ${arr[i].engineerGithub}</h4>
+            `
+        }else if(arr[i].getType() == "Intern"){
+            outputString += `<h2>Intern: ${arr[i].internName}</h2>
+                             <h4>Id: ${arr[i].internId}<br>
+                             Email: ${arr[i].internEmail}<br>
+                             Github: ${arr[i].internGithub}</h4>   
+            `
+        }
+    }
+    outputString +=`
+    </body>
+    </html>`
+
+    fs.writeFile("index.html", outputString, (err) => {
         if (err) throw err;
     });
 
