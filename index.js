@@ -57,22 +57,22 @@ function addEngineer(){
     inquirer.prompt([
         {
             type: "input",
-            name: "enginerName",
+            name: "engineerName",
             message: "What is the Engineer's name?"
         },
         {
             type: "input",
-            name: "enginerID",
+            name: "engineerId",
             message: "What is the Engineer's Id?"
         },     
         {
             type: "input",
-            name: "enginerEmail",
+            name: "engineerEmail",
             message: "What is the Engineer's Email?"
         },     
         {
             type: "input",
-            name: "enginerGithub",
+            name: "engineerGithub",
             message: "What is the Engineer's Github?"
         }
     ]).then(answers => {
@@ -92,7 +92,7 @@ function addIntern(){
         },
         {
             type: "input",
-            name: "internID",
+            name: "internId",
             message: "What is the Intern's Id?"
         },     
         {
@@ -123,26 +123,33 @@ function generateHtml(arr) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Team Generator</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" >
+        <link href="./src/style.css" rel="stylesheet">
     </head>
     <body>`
 
     for(i=0; i< arr.length; i++){
         if(arr[i].getType() == "Manager"){
-            outputString += `<h1>Manager: ${arr[i].name}</h1>
-                             <h4>Id: ${arr[i].id}<br>
-                             Email: ${arr[i].email}</h4>               
+            outputString += `<div class="card" style="width: 18rem;">
+                             <h4 class="card-title" id="manager">Manager: ${arr[i].name}</h4>
+                             <p class="card-text">Id: ${arr[i].id}<br>
+                             Email: ${arr[i].email}</p>  
+                             </div>             
             `
         }else if(arr[i].getType() == "Engineer"){
-            outputString += `<h2>Engineer: ${arr[i].engineerName}</h2>
-                             <h4>Id: ${arr[i].engineerId}<br>
+            outputString += `<div class="card" style="width: 18rem;">
+                             <h4 class="card-title" id="engineer">Engineer: ${arr[i].engineerName}</h4>
+                             <p class="card-text">Id: ${arr[i].engineerId}<br>
                              Email: ${arr[i].engineerEmail}<br>
-                             Github: ${arr[i].engineerGithub}</h4>
+                             Github: ${arr[i].engineerGithub}</p>
+                             </div>
             `
         }else if(arr[i].getType() == "Intern"){
-            outputString += `<h2>Intern: ${arr[i].internName}</h2>
-                             <h4>Id: ${arr[i].internId}<br>
+            outputString += `<div class="card" style="width: 18rem;">
+                             <h4 class="card-title" id="intern">Intern: ${arr[i].internName}</h4>
+                             <p class="card-text">Id: ${arr[i].internId}<br>
                              Email: ${arr[i].internEmail}<br>
-                             Github: ${arr[i].internGithub}</h4>   
+                             Github: ${arr[i].internGithub}</p>   
             `
         }
     }
