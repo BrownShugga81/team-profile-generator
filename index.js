@@ -3,7 +3,7 @@ const Intern = require("./lib/intern");
 const Engineer = require("./lib/engineer");
 const Manager = require("./lib/manager");
 const fs = require('fs');
-const outputArr = []
+const outputArr = [];
 
 
 function start() {
@@ -110,7 +110,9 @@ function addIntern(){
 }
 
 function generateHtml(arr) {
-    fs.writeFile("index.html", (err) => {
+    let outputString = 
+
+    fs.writeFile("./dist/index.html", outputString, (err) => {
         if (err) throw err;
     });
 
